@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aula 7</title>
+  <!-- Através de uma CDN (Rede de Distribuição de Conteúdo) está buscando o link do CSS do Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="d-flex justify-content-center">
+    <form class="w-50 p-3 bg-light border">
+        <h2>Cadastro de Produto</h2>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input class="form-control" 
+            type="text" 
+            class="form-control" 
+            id="name" 
+            name="name" 
+            value="" 
+          />
+        </div>
+    
+      <div class="mb-3">
+        <label class="form-label" for="preco">Preço</label><br />
+        <input class="form-control" 
+        type="text" 
+        id="preco" 
+        name="preco" 
+        value="" 
+        placeholder="R$00,00" />
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label" for="categoria">Categoria:</label>
+        <select name="categoria" class="form-select" id="categoria">
+          <option value="camisas">Camisas</option>
+          <option value="calcados">Calçados</option>
+          <option value="calcas">Calças</option>
+          <option value="Decoracao">Decoração</option>
+          <option value="perfumaria">Perfumaria</option>
+          <option value="livraria">Livraria</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="cor">Cor:</label>
+        <select name="cor" class="form-select" id="cor">
+          <option value="branco">Branco</option>
+          <option value="preto">Preto</option>
+          <option value="amarelo">Amarelo</option>
+          <option value="azul">Azul</option>
+          <option value="lilas">Lilás</option>
+          <option value="verde">Verde</option>
+        </select>
+      <br />
+
+      <div class="mb-3">
+        <label class="form-label" for="tamanho">Tamanho:</label>
+        <select name="tamanho" class="form-select" id="tamanho">
+          <option value="pp">PP</option>
+          <option value="p">P</option>
+          <option value="m">M</option>
+          <option value="g">G</option>
+          <option value="gg">GG</option>
+          <option value="xg">XG</option>
+        </select>
+      </div>
+      <!-- A tag label serve para criar rótulos para elementos e permitem selecionar opções -->
+      <!-- A tag selec serve para criar uma lista suspensa e coletar entrada do usuário -->
+      <!-- A tag option serve para definir uma opção dentro de uma lista de seleções;-->
+      <!-- As tags select, optgroup e datalist fazem parte do grupo de elementos que integram option -->
+      <!-- A tag br significa quebra de linha, ou seja, pausa no texto -->
+      <!-- A tag for serve para vincular determinado elemento em um formulário ou especificar uma relação... -->
+      <!-- entre elementos, em uma tabela de cálculos -->
+      <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Cadastrar" />
+      </div>
+    </form>
+  </div>
+
+    <!-- A propriedade btn define como estilo de botão; btn-primary cria um botão azul -->
+  <script>
+    function formatarParaReal(value) {
+      // Remove qualquer caractere que não seja número
+      const number = value.replace(/\D/g, '');
+      // Converte para float e divide por 100
+      const floatValue = parseFloat(number) / 100;
+      // Formata como moeda brasileira
+      return floatValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    document.getElementById('preco').addEventListener('input', function (event) {
+      const input = event.target;
+      const cursorPos = input.selectionStart; // Posição do cursor antes da alteração
+      const formattedValue = formatarParaReal(input.value);
+
+      // Atualiza o valor do input com a formatação
+      input.value = formattedValue;
+    });
+  </script>
+  <!-- O script (integração com o Javascript) precisa ficar no fim do body para tudo que estiver 
+    anteriormente no código possa interarir com o conteúdo, isso evita problemas de execução da página -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>
